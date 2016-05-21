@@ -1,6 +1,3 @@
-var Yelp = require('./yelp-api.js');
-
-
 var map;    // declares a global map variable
 
 function initMap() {
@@ -10,14 +7,10 @@ function initMap() {
   });
 
 function pinSearch() {
-    yelp.search({ term: 'food', location: 'Alameda, CA', limit: 1 })
-      .then(function (data) {
-        console.log(data);
-      })
-      .catch(function (err) {
-        console.error(err);
-      })
-  };
+    $.getJSON('https://api.foursquare.com/v2/venues/search?client_id=J5B15DIFBQULDELDRC00BET5PTEUKTEFUMFDZ5HAYSY2P33R&client_secret=XIH1G3153DXNXBNSEFUEHFCPTMY0YVAGK5LWGZJQOQFQKLMY&v=20130815&ll=37.7,-122&query=mexican',
+    function(data){
+      console.log(data);
+    });
+  }
   pinSearch();
 }
-window.addEventListener('load', initMap);
