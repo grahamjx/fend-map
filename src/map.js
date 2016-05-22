@@ -1,21 +1,23 @@
 var map;    // declares a global map variable
+var googleMap = {};
 
-function initMap() {
+googleMap.initMap = function(){
   map = new google.maps.Map(document.getElementById("map"), {
-    center: {lat: 37.7652065, lng: -122.2416355},
-    zoom: 13
-  });
+  center: {lat: 37.7652065, lng: -122.2416355},
+  zoom: 13
+  })
+}
 
-  function locationFinder() {
+googleMap.locationFinder = function(){
+   var locations = [];
 
-    var locations = [];
-    places.forEach(function(place){
-      locations.push(place.name);
-    });
-    return locations;
-  }
+   vm.filteredItems().forEach(function(place){
+     locations.push(place.name);
+   });
+   return locations;
+ }
 
-  function createMapMarker(placeData) {
+googleMap.createMapMarker = function (placeData) {
     var lat = placeData.geometry.location.lat();  // latitude from the place service
     var lon = placeData.geometry.location.lng();  // longitude from the place service
     var name = placeData.name;   // name of the place from the place service
@@ -27,7 +29,8 @@ function initMap() {
       position: placeData.geometry.location,
       title: name
     });
-
+    places.marker = marker;
+    console.log(places.marker);
     var infoWindow = new google.maps.InfoWindow({
       content: name
     });
@@ -43,6 +46,7 @@ function initMap() {
       map.setCenter({lat: 37.7652065, lng: -122.2416355});
       map.setZoom(13);
     });
+  }
 
 
 
@@ -53,13 +57,13 @@ function initMap() {
     //map.fitBounds(bounds);
     // center the map
     //map.setCenter(bounds.getCenter());
-  }
+
 
   /*
   callback(results, status) makes sure the search returned results for a location.
   If so, it creates a new map marker for that location.
   */
-  function callback(results, status) {
+/*googleMap.callback = function(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       createMapMarker(results[0]);
     }
@@ -69,7 +73,7 @@ function initMap() {
   pinPoster(locations) takes in the array of locations created by locationFinder()
   and fires off Google place searches for each location
   */
-  function pinPoster(locations) {
+  /*function pinPoster(locations) {
 
     // creates a Google place search service object. PlacesService does the work of
     // actually searching for location data.
@@ -86,15 +90,15 @@ function initMap() {
       // function with the search results after each search.
       service.textSearch(request, callback);
     });
-  }
+  }*/
 
   // Sets the boundaries of the map based on pin locations
-  window.mapBounds = new google.maps.LatLngBounds();
+  //window.mapBounds = new google.maps.LatLngBounds();
 
-  locations = locationFinder();
-  pinPoster(locations);
+  locations = googleMap.locationFinder(places);
+  //console.log(locations);
+  //pinPoster(locations);
 
-}
 
 
 /*function pinSearch() {

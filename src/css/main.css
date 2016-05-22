@@ -6,7 +6,7 @@ html, body {
 
 #map {
   height: 100%;
-  margin-left: 150px;
+  margin-left: 250px;
 }
 
 /*
@@ -16,13 +16,14 @@ appears on the left side of the page.
 
 #menu {
     margin-left: -150px; /* "#menu" width */
-    width: 150px;
+    width: 250px;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     z-index: 1000; /* so the menu or its navicon stays above all content */
-    background: #191818;
+    /*background: #191818;*/
+    background: white;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -78,7 +79,7 @@ appears on the left side of the page.
     */
     #menu .pure-menu-heading {
         font-size: 110%;
-        color: #fff;
+        color: black;
         margin: 0;
     }
 
