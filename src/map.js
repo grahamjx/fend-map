@@ -8,15 +8,14 @@ googleMap.initMap = function(){
   })
 }
 
-googleMap.locationFinder = function(){
-   var locations = [];
+function pinSearch() {
+  $.getJSON('https://api.foursquare.com/v2/venues/'+ places[0].venue + '?client_id=J5B15DIFBQULDELDRC00BET5PTEUKTEFUMFDZ5HAYSY2P33R&client_secret=XIH1G3153DXNXBNSEFUEHFCPTMY0YVAGK5LWGZJQOQFQKLMY&v=20130815&ll=37.7,-122',
+    function(data){
+      console.log(data);
+    });
+  }
 
-   vm.filteredItems().forEach(function(place){
-     locations.push(place.name);
-   });
-   return locations;
- }
-
+/*
 googleMap.createMapMarker = function (placeData) {
     var lat = placeData.geometry.location.lat();  // latitude from the place service
     var lon = placeData.geometry.location.lng();  // longitude from the place service
@@ -95,16 +94,6 @@ googleMap.createMapMarker = function (placeData) {
   // Sets the boundaries of the map based on pin locations
   //window.mapBounds = new google.maps.LatLngBounds();
 
-  locations = googleMap.locationFinder(places);
+  //locations = googleMap.locationFinder(places);
   //console.log(locations);
   //pinPoster(locations);
-
-
-
-/*function pinSearch() {
-    $.getJSON('https://api.foursquare.com/v2/venues/40a55d80f964a52020f31ee3?client_id=J5B15DIFBQULDELDRC00BET5PTEUKTEFUMFDZ5HAYSY2P33R&client_secret=XIH1G3153DXNXBNSEFUEHFCPTMY0YVAGK5LWGZJQOQFQKLMY&v=20130815&ll=37.7,-122',
-    function(data){
-      console.log(data);
-    });
-  }
-  pinSearch();*/

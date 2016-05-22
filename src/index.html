@@ -16,9 +16,9 @@
       </a>
       <div id="menu">
         <div class="pure-menu">
-          <a class="pure-menu-heading"><input data-bind='value: itemToFilter, valueUpdate: "afterkeydown"'/></a>
+          <a class="pure-menu-heading"><input data-bind="value: itemToFilter, valueUpdate: 'afterkeydown'"/></a>
             <ul class="pure-menu-list" data-bind="foreach: filteredItems">
-              <li class="pure-menu-item" data-bind="text: name" data-bind="click: marker"></li>
+              <button class="pure-menu-item" data-bind="text: name, click: $parent.markerClick"></button>
             </ul>
         </div>
       </div>
