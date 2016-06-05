@@ -9,23 +9,27 @@ html, body {
   margin-left: 250px;
 }
 
+#pic {
+  margin-right: 15px;
+  float: left;
+}
+
 /*
 The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
 appears on the left side of the page.
 */
 
 #menu {
-    margin-left: -150px; /* "#menu" width */
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 1000; /* so the menu or its navicon stays above all content */
-    /*background: #191818;*/
-    background: white;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+  margin-left: -150px; /* "#menu" width */
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000; /* so the menu or its navicon stays above all content */
+  background: #191818;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
     /*
     All anchors inside the menu should be styled like this.
