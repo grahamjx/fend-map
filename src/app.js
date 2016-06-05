@@ -1,6 +1,7 @@
 var map,
     FOURSQUARE_API_CLIENT = 'J5B15DIFBQULDELDRC00BET5PTEUKTEFUMFDZ5HAYSY2P33R',
     FOURSQUARE_API_SECRET = 'XIH1G3153DXNXBNSEFUEHFCPTMY0YVAGK5LWGZJQOQFQKLMY',
+
     placeData = [
   {"name": "Island Taqueria",
    "venue": "4dd857ab2271c5d36d52eaf0"},
@@ -39,6 +40,7 @@ function listViewModel() {
   self.placesArray = ko.observableArray(placeData);
 
   self.placesArray().forEach(function(place) {
+
     $.getJSON('https://api.foursquare.com/v2/venues/'+ place.venue + '?client_id='+ FOURSQUARE_API_CLIENT + '&client_secret=' + FOURSQUARE_API_SECRET + '&v=20130815&ll=37.7,-122')
 
     .done(function(data) {
@@ -99,10 +101,14 @@ function listViewModel() {
 		}
 	};
 
+  self.markerClick = function(place){
+    google.maps.event.trigger(place.marker, 'click');
+  }
+
   self.resetMarkers = function() {
         self.placesArray().forEach(function(place){
-            place.marker.setVisible(true);
-          });
+          place.marker.setVisible(true);
+        })
     };
 
   self.filteredItems = ko.computed(function() {
@@ -112,9 +118,7 @@ function listViewModel() {
           self.resetMarkers();
         }
         return self.placesArray();
-      }
-      else {
-      self.resetMarkers();
+    } else {
         return(ko.utils.arrayFilter(self.placesArray(), function(place) {
             var visible = stringStartsWith(place.name.toLowerCase(), filter);
             place.marker.setVisible(visible);
