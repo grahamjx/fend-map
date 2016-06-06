@@ -7,11 +7,11 @@ This project uses gulp to build the web application and host it locally on port 
 
 1. [Install Node.js] (https://nodejs.org/en/download/)
 2. Clone the repository
-      
+
     `$ git clone https://github.com/slkcoin/FEND-map`
 
 3. Navigate to the project folder and run npm install
-  
+
   ```bash
   $> cd /path/to/your-project-folder
   $> npm install
@@ -34,6 +34,3 @@ Location data is hard-coded in the placeData object.
 ###API
 
 This project is powered by the Google Maps API and the Foursquare API. For each location, a getJSON to Foursquare is called and the corresponding infromation is used to populate info windows for each of the map markers.
-
-
-
