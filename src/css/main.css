@@ -2,7 +2,8 @@
   tweaks were done to the basics as necessary. I am using the responsive side-menu
   layout. See purecss.io for more information.*/
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
