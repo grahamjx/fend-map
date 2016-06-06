@@ -32,9 +32,7 @@ var map,
 // Creates the map and sets a comfortable center point
 function initMap(){
   map = new google.maps.Map(document.getElementById("map"), {
-  center: {lat: 37.7652065, lng: -122.2416355},
-  disableDefaultUI: true,
-  zoom: 13});
+  disableDefaultUI: true});
 
   window.mapBounds = new google.maps.LatLngBounds();
 
