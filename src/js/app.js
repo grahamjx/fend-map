@@ -36,6 +36,13 @@ function initMap(){
   disableDefaultUI: true,
   zoom: 13});
 
+  window.mapBounds = new google.maps.LatLngBounds();
+
+  //event listener to handle window resize
+  google.maps.event.addDomListener(window, "resize", function() {
+    map.fitBounds(mapBounds);
+});
+
   ko.applyBindings(new listViewModel());
 }
 
@@ -55,7 +62,7 @@ function listViewModel() {
   self.itemToFilter = ko.observable('');
   self.placesArray = ko.observableArray(placeData); //contains the orignal model data
 
-//Function is used to animate the pins and close info windows when a new one is opened
+//Function is used to animate the markers and open/close info windows appropriately
   self.pinAnimation = function(marker, infoWindow) {
 		function bounce() {
       map.setCenter(marker.getPosition());
@@ -67,6 +74,7 @@ function listViewModel() {
 			if (lastInfoWindow === infoWindow) {
 	          	bounce(marker);
 	          	infoWindow.close(map, this);
+              map.fitBounds(mapBounds);
 	          	lastInfoWindow = null;
       }
 	    else {
@@ -106,6 +114,7 @@ function listViewModel() {
 
     google.maps.event.addListener(place.infoWindow, 'closeclick', function() {
       lastInfoWindow = null;
+      map.fitBounds(mapBounds);
     });
 
     $.getJSON('https://api.foursquare.com/v2/venues/'+ place.venue + '?client_id='+ FOURSQUARE_API_CLIENT + '&client_secret=' + FOURSQUARE_API_SECRET + '&v=20130815&ll=37.7,-122')
@@ -132,6 +141,9 @@ function listViewModel() {
       var contentString = place.name + '<h5>Foursquare data is unavailable. Please try again!</h5>'
       place.infoWindow.setContent(contentString);
     })
+
+    mapBounds.extend(new google.maps.LatLng(place.lat, place.lng));
+    map.fitBounds(mapBounds);
   });
 
   //Clicking on the list will trigger the map marker
@@ -143,6 +155,7 @@ function listViewModel() {
   self.resetMarkers = function() {
         self.placesArray().forEach(function(place){
           place.marker.setVisible(true);
+          map.fitBounds(mapBounds);
         })
     };
 

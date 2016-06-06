@@ -1,3 +1,6 @@
+/*Provided by the purecss layout package. Allows the side menu to collapse when
+  the screen gets smaller.*/
+
 (function (window, document) {
 
     var layout   = document.getElementById('layout'),
