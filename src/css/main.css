@@ -1,7 +1,7 @@
 /*My application is built on the Pure.css framework. Various modifications and
   tweaks were done to the basics as necessary. I am using the responsive side-menu
   layout. See purecss.io for more information.*/
-  
+
 html, body {
   height: 100%;
   margin: 0;
@@ -17,7 +17,7 @@ input {
   margin-left: 150px;
 }
 
-#pic {
+.infowindow {
   margin-right: 15px;
   float: left;
 }
