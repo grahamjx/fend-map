@@ -35,5 +35,6 @@ Location data is hard-coded in the placeData object.
 
 This project is powered by the Google Maps API and the Foursquare API. For each location, a getJSON to Foursquare is called and the corresponding infromation is used to populate info windows for each of the map markers.
 
+[LICENSE](https://github.com/slkcoin/FEND-map/LICENSE.md)
 
 
