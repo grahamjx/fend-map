@@ -18,6 +18,12 @@ This project uses gulp to build the web application and host it locally on port 
   ```
 4. This will install everything necessary to evaluate the project. If you're curious about what gets installed, check out the package.json file.
 
+5. Run gulp from project directory
+   
+    `$ gulp serve`
+  
+6. Open a browser and visit localhost:8000
+
 
 ###The View
 
