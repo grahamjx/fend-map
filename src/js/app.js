@@ -1,32 +1,34 @@
 //This is my main JavaScript file used for the map application.
 
+//'use strict';
+
 var map,
     FOURSQUARE_API_CLIENT = 'J5B15DIFBQULDELDRC00BET5PTEUKTEFUMFDZ5HAYSY2P33R',
     FOURSQUARE_API_SECRET = 'XIH1G3153DXNXBNSEFUEHFCPTMY0YVAGK5LWGZJQOQFQKLMY',
 
 //Starting data
     placeData = [
-  {"name": "Island Taqueria",
-   "venue": "4dd857ab2271c5d36d52eaf0",
-   "lat": 37.765768,
-   "lng": -122.241637},
-  {"name": "South Shore Cafe",
-   "venue": "4bc20e70b492d13a3fdca660",
-   "lat": 37.75757837706282,
-   "lng": -122.25251336681507},
-  {"name": "Speisekammer",
-   "venue": "463de5c9f964a5203f461fe3",
-   "lat": 37.766064487213704,
-   "lng": -122.2401211982562},
-  {"name": "USS Hornet Museum",
-   "venue": "4a6cbe2df964a5207dd11fe3",
-   "lat": 37.772453282779324,
-   "lng": -122.30214357376097},
-  {"name": "Kamakura Japanese Restaurant",
-   "venue": "4645be7ef964a5207f461fe3",
-   "lat": 37.763658373312516,
-   "lng": -122.23850548267365}
-];
+    {"name": "Island Taqueria",
+     "venue": "4dd857ab2271c5d36d52eaf0",
+     "lat": 37.765768,
+     "lng": -122.241637},
+    {"name": "South Shore Cafe",
+     "venue": "4bc20e70b492d13a3fdca660",
+     "lat": 37.75757837706282,
+     "lng": -122.25251336681507},
+    {"name": "Speisekammer",
+     "venue": "463de5c9f964a5203f461fe3",
+     "lat": 37.766064487213704,
+     "lng": -122.2401211982562},
+    {"name": "USS Hornet Museum",
+     "venue": "4a6cbe2df964a5207dd11fe3",
+     "lat": 37.772453282779324,
+     "lng": -122.30214357376097},
+    {"name": "Kamakura Japanese Restaurant",
+     "venue": "4645be7ef964a5207f461fe3",
+     "lat": 37.763658373312516,
+     "lng": -122.23850548267365}
+   ];
 
 
 // Creates the map and sets a comfortable center point
@@ -65,26 +67,26 @@ function listViewModel() {
 		function bounce() {
       map.setCenter(marker.getPosition());
 			marker.setAnimation(google.maps.Animation.BOUNCE);
-			setTimeout(function(){marker.setAnimation(null); }, 1900);
-		};
+			setTimeout(function(){marker.setAnimation(null); }, 1400);
+		}
 
 		return function() {
 			if (lastInfoWindow === infoWindow) {
-	          	bounce(marker);
-	          	infoWindow.close(map, this);
-              map.fitBounds(mapBounds);
-	          	lastInfoWindow = null;
+        bounce(marker);
+	      infoWindow.close(map, this);
+        map.panTo(marker);
+	      lastInfoWindow = null;
       }
 	    else {
 	      if(lastInfoWindow !== null) {
 	      lastInfoWindow.close(map, this);
 	      bounce(marker);
         }
-          bounce(marker);
-	        infoWindow.open(map, this);
-          lastInfoWindow = infoWindow;
+      bounce(marker);
+	    infoWindow.open(map, this);
+      lastInfoWindow = infoWindow;
 	    }
-		}
+		};
 	};
 
 /* For each place in the array, I create a simple map marker and info window. The
@@ -136,9 +138,9 @@ function listViewModel() {
 
     //If the API isn't working, it will alert the user that the foursquare information is unavailable
     .fail(function() {
-      var contentString = place.name + '<h5>Foursquare data is unavailable. Please try again!</h5>'
+      var contentString = place.name + '<h5>Foursquare data is unavailable. Please try again!</h5>';
       place.infoWindow.setContent(contentString);
-    })
+    });
 
     mapBounds.extend(new google.maps.LatLng(place.lat, place.lng));
     map.fitBounds(mapBounds);
@@ -147,14 +149,14 @@ function listViewModel() {
   //Clicking on the list will trigger the map marker
   self.markerClick = function(place){
     google.maps.event.trigger(place.marker, 'click');
-  }
+  };
 
   //Resets the visability of all the markers
   self.resetMarkers = function() {
         self.placesArray().forEach(function(place){
           place.marker.setVisible(true);
           map.fitBounds(mapBounds);
-        })
+        });
     };
 
   /*Takes input data from the user and compares it with what is in the list.
