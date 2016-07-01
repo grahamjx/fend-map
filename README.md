@@ -39,4 +39,4 @@ Location data is hard-coded in the placeData object.
 
 ###API
 
-This project is powered by the Google Maps API and the Foursquare API. For each location, a getJSON to Foursquare is called and the corresponding infromation is used to populate info windows for each of the map markers.
+This project is powered by the Google Maps API and the Foursquare API. For each location, a getJSON to Foursquare is called and the corresponding information is used to populate info windows for each of the map markers.
