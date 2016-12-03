@@ -8,7 +8,7 @@ This project uses gulp to build the web application and host it locally on port 
 1. [Install Node.js] (https://nodejs.org/en/download/)
 2. Clone the repository
 
-    `$ git clone https://github.com/slkcoin/FEND-map`
+    `$ git clone https://github.com/grahamjx/fend-map`
 
 3. Navigate to the project folder and run npm install
 
@@ -19,11 +19,12 @@ This project uses gulp to build the web application and host it locally on port 
 4. This will install everything necessary to evaluate the project. If you're curious about what gets installed, check out the package.json file.
 
 5. Run gulp from project directory
-   
+
     `$ gulp serve`
-  
+
 6. Open a browser and visit localhost:8000
 
+7. You can also check it out at https://grahamjx.github.io/fend-map
 
 ###The View
 
