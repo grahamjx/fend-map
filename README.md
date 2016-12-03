@@ -24,7 +24,7 @@ This project uses gulp to build the web application and host it locally on port 
 
 6. Open a browser and visit localhost:8000
 
-7. You can also check it out at https://grahamjx.github.io/fend-map
+7. You can also check it out at http://grahamjx.github.io/fend-map
 
 ###The View
 
